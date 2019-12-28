@@ -1,5 +1,7 @@
 package com.rabbit.lancealance.model.lance;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.rabbit.lancealance.model.lance.enums.TipoLance;
 import lombok.*;
 
@@ -34,14 +36,17 @@ public class Lance implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_partida", nullable = false, foreignKey = @ForeignKey(name = "fk_lance_partida"))
+    @JsonIgnore
     private Partida partida;
 
     @ManyToOne
     @JoinColumn(name = "id_partida_equipe", foreignKey = @ForeignKey(name = "fk_lance_partida_equipe"))
+    @JsonIgnoreProperties(value = {"placar", "esquemaTatico", "jogadores"})
     private PartidaEquipe partidaEquipe;
 
     @ManyToOne
     @JoinColumn(name = "id_partida_equipe_jogador", foreignKey = @ForeignKey(name = "fk_lance_partida_equipe_jogador"))
+    @JsonIgnoreProperties(value = {"gols", "cartaoAmarelo", "cartaoVermelho", "titulo", "substituido", "entrouSubstituicao", "posicao", "equipe"})
     private PartidaEquipeJogador partidaEquipeJogador;
 
 }

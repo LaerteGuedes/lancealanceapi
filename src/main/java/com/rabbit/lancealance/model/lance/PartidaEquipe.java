@@ -1,9 +1,11 @@
 package com.rabbit.lancealance.model.lance;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "tab_partida_equipe", schema = "lance")
@@ -29,6 +31,10 @@ public class PartidaEquipe implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_equipe", foreignKey = @ForeignKey(name = "fk_partida_equipe_equipe"), nullable = false)
+    @JsonIgnoreProperties(value = {"escudo", "dataCadastro", "ativa"})
     private Equipe equipe;
+
+    @OneToMany(mappedBy = "equipe")
+    private List<PartidaEquipeJogador> jogadores;
 
 }

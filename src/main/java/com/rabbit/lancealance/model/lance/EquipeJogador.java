@@ -1,5 +1,6 @@
 package com.rabbit.lancealance.model.lance;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rabbit.lancealance.model.lance.enums.Posicao;
 import lombok.*;
 
@@ -30,6 +31,7 @@ public class EquipeJogador implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_equipe", foreignKey = @ForeignKey(name = "fk_equipe_jogador_equipe"), nullable = false)
+    @JsonIgnore
     private Equipe equipe;
 
     @ManyToOne
