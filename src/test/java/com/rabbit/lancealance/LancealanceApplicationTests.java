@@ -3,10 +3,10 @@ package com.rabbit.lancealance;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class LancealanceApplicationTests {
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 
